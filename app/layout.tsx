@@ -1,16 +1,11 @@
 import type { Metadata } from "next"
 import localFont from "next/font/local"
-import { Inter, Space_Grotesk } from "next/font/google"
+import { Inter } from "next/font/google"
 import "./globals.css"
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
-})
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-space-grotesk",
 })
 
 const departureMono = localFont({
@@ -57,9 +52,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${spaceGrotesk.variable} ${departureMono.variable} antialiased`}
+      className={`dark ${inter.variable} ${departureMono.variable} antialiased`}
     >
-      <body className="text-foreground text-base">{children}</body>
+      <body className="bg-background text-foreground text-base">
+        {children}
+      </body>
     </html>
   )
 }
