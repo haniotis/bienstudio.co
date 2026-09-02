@@ -18,11 +18,11 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://bienstudio.co"
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "Bien",
-  description: "Bien.",
+  description: "A digital brand and product design studio.",
   alternates: { canonical: "/" },
   openGraph: {
     title: "Bien",
-    description: "Bien.",
+    description: "A digital brand and product design studio.",
     url: "/",
     siteName: "Bien",
     locale: "en_US",
