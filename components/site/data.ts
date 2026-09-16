@@ -1,5 +1,3 @@
-import type { IconName } from "@/components/ui/icon"
-
 // Single source of truth for the one-pager's content. Copy and lists live here
 // so the section components stay presentational and the site is easy to edit.
 
@@ -16,9 +14,9 @@ export const hero = {
   muted: "We build brands, interfaces, websites, and campaigns.",
 }
 
-// Clients shown under "Trusted by". `slug` maps to /assets/logos/<slug>.svg —
-// drop the SVG in and it replaces the text wordmark automatically (see
-// ClientLogo). `name` is the accessible label and the fallback wordmark.
+// Clients shown under "Trusted by". `slug` maps to an inline logo component in
+// the logos registry (see components/site/logos); `name` is the accessible
+// label (and the wordmark fallback when a slug isn't registered).
 export interface Client {
   name: string
   slug: string
@@ -32,10 +30,9 @@ export interface Client {
   scale?: number
 }
 
-// Placeholder wall — cycles the registered marks to dial in the logo sizing.
-// `scale` optically balances each mark against the others (icon logos usually
-// want to sit larger than wordmarks). Swap in real clients as more SVGs land.
-const WALL: Client[] = [
+// The client logo wall. `scale` optically balances each mark against the
+// others (icon logos usually want to sit larger than wordmarks).
+export const clients: Client[] = [
   { name: "Apple", slug: "apple", href: "https://www.apple.com", scale: 1.1 },
   {
     name: "Volkswagen",
@@ -53,31 +50,41 @@ const WALL: Client[] = [
   },
   { name: "Plaid", slug: "plaid", href: "https://www.plaid.com", scale: 0.9 },
   { name: "Reevo", slug: "reevo", href: "https://reevo.ai", scale: 0.75 },
+  { name: "Crosby", slug: "crosby", href: "https://crosby.ai", scale: 0.5 },
+  {
+    name: "DigitalOcean",
+    slug: "digitalocean",
+    href: "https://www.digitalocean.com",
+    scale: 0.85,
+  },
   {
     name: "Twitter",
     slug: "twitter",
     href: "https://twitter.com",
-    scale: 0.9,
+    scale: 0.85,
   },
-  { name: "Tonal", slug: "tonal", href: "https://www.tonal.com", scale: 0.45 },
+  { name: "Tonal", slug: "tonal", href: "https://www.tonal.com", scale: 0.5 },
   {
     name: "Mixpanel",
     slug: "mixpanel",
     href: "https://mixpanel.com",
     scale: 0.65,
   },
+  { name: "Arc", slug: "arc", href: "https://arc.net", scale: 0.6 },
+  { name: "Vendr", slug: "vendr", href: "https://www.vendr.com", scale: 0.7 },
   {
     name: "Compound",
     slug: "compound",
     href: "https://compound.finance",
     scale: 0.75,
   },
+  {
+    name: "Metabase",
+    slug: "metabase",
+    href: "https://www.metabase.com",
+    scale: 1.15,
+  },
 ]
-
-export const clients: Client[] = Array.from(
-  { length: 16 },
-  (_, i) => WALL[i % WALL.length],
-)
 
 export const testimonial = {
   quote:
@@ -89,15 +96,14 @@ export const testimonial = {
 
 export interface Expertise {
   label: string
-  icon: IconName
 }
 
 export const expertise: Expertise[] = [
-  { label: "Brand Identity", icon: "Asterisk" },
-  { label: "Product Vision", icon: "Asterisk" },
-  { label: "Creative Direction", icon: "Asterisk" },
-  { label: "Web Design & Development", icon: "Asterisk" },
-  { label: "Design Systems + Prototyping", icon: "Asterisk" },
+  { label: "Brand Identity" },
+  { label: "Product Vision" },
+  { label: "Creative Direction" },
+  { label: "Web Design & Development" },
+  { label: "Design Systems + Prototyping" },
 ]
 
 export const about = {

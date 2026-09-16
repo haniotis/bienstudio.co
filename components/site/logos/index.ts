@@ -10,6 +10,11 @@ import { ReevoLogo } from "./reevo"
 import { TonalLogo } from "./tonal"
 import { MixpanelLogo } from "./mixpanel"
 import { CompoundLogo } from "./compound"
+import { DigitalOceanLogo } from "./digitalocean"
+import { ArcLogo } from "./arc"
+import { CrosbyLogo } from "./crosby"
+import { VendrLogo } from "./vendr"
+import { MetabaseLogo } from "./metabase"
 
 export interface LogoProps {
   className?: string
@@ -30,4 +35,9 @@ export const logos: Record<string, ComponentType<LogoProps>> = {
   tonal: TonalLogo,
   mixpanel: MixpanelLogo,
   compound: CompoundLogo,
+  digitalocean: DigitalOceanLogo,
+  arc: ArcLogo,
+  crosby: CrosbyLogo,
+  vendr: VendrLogo,
+  metabase: MetabaseLogo,
 }

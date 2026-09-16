@@ -6,11 +6,11 @@ import { SectionEyebrow } from "./section-eyebrow"
 import { Tag } from "./tag"
 import { cn } from "@/utils/cn"
 import { caseStudies, type CaseStudy } from "./data"
+import { Divider } from "./divider"
+import { Fragment } from "react"
 
-// A small rounded monogram tile standing in for the client's mark. Drop a real
-// mark at /assets/logos/<slug>-mark.svg and swap this for it later.
-function BrandMark({ name, className }: { name: string; className?: string }) {
-  console.log(name)
+// The client's mark beside a case-study name — a solid tile for now.
+function BrandMark({ className }: { className?: string }) {
   return (
     <span
       aria-hidden
@@ -30,7 +30,7 @@ function CaseStudyRow({ study }: { study: CaseStudy }) {
       <Wrapper>
         <div className="mb-6 flex flex-col gap-6 md:mb-8 md:flex-row md:items-start md:justify-between md:gap-8 lg:mb-10 xl:mb-14">
           <div className="flex items-center gap-3 sm:gap-4 md:gap-5 lg:gap-6 xl:gap-7">
-            <BrandMark name={study.name} />
+            <BrandMark />
             <div>
               <Heading size={3}>{study.name}</Heading>
               <Heading
@@ -87,8 +87,11 @@ export function Partnerships() {
         </Wrapper>
       </Section>
       <>
-        {caseStudies.map((study) => (
-          <CaseStudyRow key={study.slug} study={study} />
+        {caseStudies.map((study, i) => (
+          <Fragment key={study.slug}>
+            <CaseStudyRow key={study.slug} study={study} />
+            {i < caseStudies.length - 1 && <Divider />}
+          </Fragment>
         ))}
       </>
     </>

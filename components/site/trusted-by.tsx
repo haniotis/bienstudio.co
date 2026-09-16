@@ -24,13 +24,13 @@ export function TrustedBy() {
               // --logo-scale drives each mark's height (base × scale); see
               // ClientLogo. Inherited by the SVG from this cell.
               style={{ "--logo-scale": client.scale ?? 1 } as CSSProperties}
-              className="[container-type:size] flex aspect-video items-center justify-center"
+              className="[container-type:size] flex aspect-[255/133] items-center justify-center"
             >
               {client.href ? (
                 <SmartLink
                   href={client.href}
                   aria-label={client.name}
-                  className="flex h-full w-full items-center justify-center transition-opacity hover:opacity-90"
+                  className="hover:bg-alt flex h-full w-full items-center justify-center transition-colors"
                 >
                   <ClientLogo name={client.name} slug={client.slug} />
                 </SmartLink>
