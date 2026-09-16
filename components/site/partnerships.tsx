@@ -53,13 +53,16 @@ function CaseStudyRow({ study }: { study: CaseStudy }) {
       {/* Project rail — a Blossom carousel: native horizontal scroll enhanced
           with drag. Slides lay out inline-block, so gaps come from margins. */}
       <Wrapper>
-        <div className="-mx-[5vw]">
+        {/* Bleed the carousel to the viewport edges: the Wrapper content is
+            min(1650px, 90vw) wide and centred, so each side needs
+            (100vw − that) / 2 of negative margin. */}
+        <div className="-mx-[calc((100vw_-_min(1650px,90vw))/2)]">
           <ProjectCarousel>
             {study.projects.map((project) => (
               <div
                 key={project.title}
                 data-blossom-slide
-                className="bg-alt group relative mr-4 aspect-[4/3] w-[85vw] overflow-hidden p-6 first:ml-[5vw] last:mr-[5vw] sm:w-[74vw] md:mr-6 md:w-[43vw] md:p-8 xl:w-[40vw] xl:p-10"
+                className="bg-alt group relative mr-4 aspect-[4/3] w-[85vw] overflow-hidden p-6 first:ml-[calc((100vw_-_min(1650px,90vw))/2)] last:mr-[calc((100vw_-_min(1650px,90vw))/2)] sm:w-[74vw] md:mr-6 md:w-[43vw] md:p-8 xl:w-[40vw] xl:p-10"
               >
                 <div className="flex items-start justify-between gap-3">
                   <Heading size={4} tag="span" className="text-balance">
