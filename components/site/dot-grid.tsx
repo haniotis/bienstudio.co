@@ -304,7 +304,7 @@ export function DotGrid({ className }: { className?: string }) {
       ref={containerRef}
       aria-hidden
       className={cn(
-        "relative aspect-[1600/600] w-full touch-none overflow-hidden bg-black select-none",
+        "relative aspect-square w-full touch-none overflow-hidden bg-black select-none sm:aspect-[4/3] lg:aspect-[1600/632]",
         className,
       )}
     >
