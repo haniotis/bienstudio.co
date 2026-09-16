@@ -59,7 +59,7 @@ function CaseStudyRow({ study }: { study: CaseStudy }) {
               <div
                 key={project.title}
                 data-blossom-slide
-                className="bg-alt group relative mr-4 aspect-[4/3] w-[78vw] overflow-hidden p-6 first:ml-[5vw] last:mr-[5vw] sm:w-[64vw] md:mr-6 md:w-[52vw] md:p-8 lg:w-[40vw] xl:p-10"
+                className="bg-alt group relative mr-4 aspect-[4/3] w-[85vw] overflow-hidden p-6 first:ml-[5vw] last:mr-[5vw] sm:w-[74vw] md:mr-6 md:w-[43vw] md:p-8 xl:w-[40vw] xl:p-10"
               >
                 <div className="flex items-start justify-between gap-3">
                   <Heading size={4} tag="span" className="text-balance">

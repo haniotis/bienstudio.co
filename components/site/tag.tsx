@@ -13,7 +13,7 @@ export function Tag({
   return (
     <span
       className={cn(
-        "border-border text-muted-foreground shrink-0 rounded-full border px-2.5 py-1 font-mono text-xs whitespace-nowrap uppercase",
+        "border-border text-foreground shrink-0 rounded-full border px-2.5 py-1 font-mono text-xs whitespace-nowrap uppercase",
         className,
       )}
     >
