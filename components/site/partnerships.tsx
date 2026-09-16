@@ -36,7 +36,7 @@ function CaseStudyRow({ study }: { study: CaseStudy }) {
               <Heading
                 size={6}
                 tag="p"
-                className="text-muted-foreground mt-1 lg:mt-2"
+                className="text-foreground mt-1 lg:mt-2"
               >
                 {study.tagline}
               </Heading>
