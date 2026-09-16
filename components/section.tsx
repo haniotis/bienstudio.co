@@ -1,33 +1,19 @@
 import { cn } from "@/utils/cn"
 import { ReactNode, forwardRef, type ElementType } from "react"
 import { cva, type VariantProps } from "class-variance-authority"
-import GridContainer from "./grid-container"
-import { Heading } from "./ui/heading"
-import { widowFix } from "@/utils/widowFix"
 
-export const SECTION_GAP =
-  "space-y-12 md:space-y-14 lg:space-y-16 xl:space-y-20"
+// Stacks sections and sets the page's vertical rhythm (applied to <main>, see
+// app/page.tsx): a flex column whose fluid gap AND matching top padding both
+// run 64px → 112px across 375px → 1728px — so the first section starts with the
+// same breathing room that separates the rest. (Flex `gap` rather than
+// `space-y`: Tailwind reliably emits arbitrary `gap-[clamp()]`, not
+// `space-y-[clamp()]`. Kept as one literal string so Tailwind can scan it.)
+export const SECTION_SPACE =
+  "flex flex-col gap-[clamp(4rem,3.169rem_+_3.548vw,7rem)] pt-[clamp(4rem,3.169rem_+_3.548vw,7rem)]"
 
-// The same scale as SECTION_GAP as a grid row-gap — for grids, where `space-y`
-// can't stand in for the vertical gap between (wrapping) items.
-export const SECTION_GAP_Y = "gap-y-12 md:gap-y-14 lg:gap-y-16 xl:gap-y-20"
-
-// Vertical rhythm for a section. `default` is roomy; `tight` tweens between 10
-// and 20 (heroes and page headers); `none` removes all vertical padding. Use
-// `flushTop`/`flushBottom` (below) to drop a single side and butt sections
-// together.
-const sectionVariants = cva("bg-background relative", {
-  variants: {
-    padding: {
-      none: "py-0",
-      tight: "py-12 md:py-14 lg:py-16 xl:py-20",
-      default: "py-20 md:py-24 lg:py-32 xl:py-36",
-    },
-  },
-  defaultVariants: {
-    padding: "default",
-  },
-})
+// Sections carry NO vertical padding — the page rhythm comes entirely from the
+// SECTION_SPACE gap on the container that stacks them (see app/page.tsx).
+const sectionVariants = cva("bg-background relative")
 
 // Editor-selectable section surface. The background is painted full-bleed on
 // the `<section>`, so it always spans the page width. `none` inherits the page
@@ -39,52 +25,6 @@ const backgroundClass: Record<SectionBackground, string> = {
   subtle: "bg-alt",
   dark: "dark bg-background",
 }
-
-interface SectionHeadingProps {
-  heading: string
-  /** Optional mono eyebrow rendered above the heading, in the accent colour. */
-  eyebrow?: string
-  className?: string
-  description?: string
-}
-
-const SectionHeading = ({
-  heading,
-  eyebrow,
-  className,
-  description,
-}: SectionHeadingProps) => {
-  return (
-    <GridContainer>
-      <div
-        className={cn(
-          "col-span-6 md:col-span-11 lg:col-span-18 xl:col-span-16",
-          className,
-        )}
-      >
-        {eyebrow && (
-          <Heading
-            size={6}
-            tag="p"
-            className="text-primary mb-3 lg:mb-4 xl:mb-5"
-          >
-            {eyebrow}
-          </Heading>
-        )}
-        <Heading size={2} tag="h2" className="text-pretty">
-          {heading}
-        </Heading>
-        {description && (
-          <p className="text-foreground mt-3 text-lg">
-            {widowFix(description)}
-          </p>
-        )}
-      </div>
-    </GridContainer>
-  )
-}
-
-export { SectionHeading }
 
 /** The element `Section` renders as. Defaults to `section`. */
 export type SectionTag =
@@ -103,25 +43,7 @@ export interface SectionProps extends VariantProps<typeof sectionVariants> {
    * under the header — set it on dark sections so the nav stays legible.
    */
   navbarReverse?: boolean
-  /** Drop the top padding so this section butts up against the one above. */
-  flushTop?: boolean
-  /** Drop the bottom padding so the next section butts up against this one. */
-  flushBottom?: boolean
-  /** Add a divider along the top edge, in the border color. */
-  borderTop?: boolean
-  /** Add a divider along the bottom edge, in the border color. */
-  borderBottom?: boolean
 }
-
-/**
- * The Section props a section component forwards to its own Section — an `id`
- * (for anchor links), the flush joins, and the border dividers. Spread onto
- * `<Section {...chrome} />` and expose on the component so callers can set them.
- */
-export type SectionChrome = Pick<
-  SectionProps,
-  "id" | "flushTop" | "flushBottom" | "borderTop" | "borderBottom"
->
 
 const Section = forwardRef<HTMLElement, SectionProps>(
   (
@@ -132,11 +54,6 @@ const Section = forwardRef<HTMLElement, SectionProps>(
       tag: Tag = "section",
       background = "none",
       navbarReverse,
-      flushTop,
-      flushBottom,
-      borderTop,
-      borderBottom,
-      padding,
     },
     ref,
   ) => {
@@ -147,12 +64,8 @@ const Section = forwardRef<HTMLElement, SectionProps>(
       <Component
         ref={ref}
         className={cn(
-          sectionVariants({ padding }),
+          sectionVariants(),
           backgroundClass[background],
-          flushTop && "pt-0!",
-          flushBottom && "pb-0!",
-          borderTop && "border-border border-t",
-          borderBottom && "border-border border-b",
           className,
         )}
         id={id}

@@ -1,16 +1,15 @@
 import type { Metadata } from "next"
-import localFont from "next/font/local"
-import { Inter } from "next/font/google"
+import { Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
 
-const inter = Inter({
+const geist = Geist({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-geist",
 })
 
-const departureMono = localFont({
-  src: "./fonts/departure-mono/departure-mono-regular.woff2",
-  variable: "--font-departure-mono",
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
 })
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://bienstudio.co"
@@ -52,7 +51,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`dark ${inter.variable} ${departureMono.variable} antialiased`}
+      className={`${geist.variable} ${geistMono.variable} antialiased`}
     >
       <body className="bg-background text-foreground text-base">
         {children}
