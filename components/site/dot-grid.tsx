@@ -203,7 +203,7 @@ export function DotGrid({ className }: { className?: string }) {
 
       for (let r = 0; r < rows; r++) {
         const py = offY + r * spacing
-        // Fade in over the top only; the bottom stays solid.
+        // Fade in over the top; the bottom stays solid.
         const vignette = smoothstep(0, 0.48, py / height)
         if (vignette <= 0.001) continue
 
@@ -304,7 +304,7 @@ export function DotGrid({ className }: { className?: string }) {
       ref={containerRef}
       aria-hidden
       className={cn(
-        "relative aspect-square w-full touch-none overflow-hidden bg-black select-none sm:aspect-[4/3] lg:aspect-[1600/632]",
+        "relative aspect-square max-h-[640px] w-full touch-none overflow-hidden bg-black select-none sm:aspect-[4/3] lg:aspect-[1600/632]",
         className,
       )}
     >

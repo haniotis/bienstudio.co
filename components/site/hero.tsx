@@ -18,9 +18,7 @@ export function Hero() {
         </Wrapper>
       </Section>
       <Section>
-        <Wrapper>
-          <DotGrid />
-        </Wrapper>
+        <DotGrid />
       </Section>
     </>
   )
