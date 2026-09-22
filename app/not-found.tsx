@@ -19,7 +19,7 @@ export default function NotFound() {
         <p className="mb-6 lg:mb-8 xl:mb-10">
           The page you were looking for couldn&apos;t be found.
         </p>
-        <Button href="/" variant="primary">
+        <Button href="/">
           Go to home
         </Button>
       </Wrapper>

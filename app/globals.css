@@ -9,96 +9,66 @@
   --breakpoint-lg: 1140px;
   --breakpoint-xl: 1380px;
 
-  /* Colors: Tailwind's default palette (50-950) — override any
-     family here when the brand palette lands. */
-
-  /* Semantic Tokens - shadcn/ui pattern */
-  --color-background: var(--color-white);
-  --color-alt: var(--color-stone-50);
-  --color-foreground: var(--color-stone-700);
-  --color-strong: var(--color-stone-950);
-  --color-primary: var(--color-green-2);
-  --color-primary-foreground: var(--color-white);
-  --color-secondary: var(--color-stone-950);
-  --color-secondary-foreground: var(--color-stone-900);
-  --color-muted: var(--color-stone-100);
-  --color-muted-foreground: var(--color-stone-500);
-  --color-popover: var(--color-white);
-  --color-destructive: var(--color-red-500);
-  --color-border: color-mix(in oklab, var(--color-stone-950) 10%, transparent);
-  --color-border-dark: color-mix(
-    in oklab,
-    var(--color-stone-950) 20%,
-    transparent
-  );
-
-  /* Brand palette — each family runs 1 (lightest) → 3 (darkest). */
-  --color-green-1: #86ee31;
-  --color-green-2: #3da900;
-  --color-green-3: #002d18;
-
-  --color-blue-1: #39caff;
-  --color-blue-2: #155df2;
-  --color-blue-3: #04266c;
-
-  --color-pink-1: #dc93ff;
-  --color-pink-2: #8d22d3;
-  --color-pink-3: #41046a;
-
-  --color-yellow-1: #ffbf36;
-  --color-yellow-2: #ff6c0d;
-  --color-yellow-3: #541010;
+  /* Semantic Tokens. The site is dark by default (there is no light theme):
+     pure-black ground with white at varying opacity layered over it. Only
+     tokens actually in use are kept. */
+  --color-background: #000;
+  --color-alt: rgb(255 255 255 / 0.08);
+  --color-foreground: rgb(255 255 255 / 0.7);
+  --color-strong: #fff;
+  --color-muted-foreground: rgb(255 255 255 / 0.5);
+  --color-border: rgb(255 255 255 / 0.2);
 
   /* Fonts. Heading and body are separate tokens so the heading face can be
-     swapped later without touching the body — both point at Inter for now. */
+     swapped later without touching the body — both point at Geist for now. */
   --font-*: initial;
-  --font-sans: var(--font-inter), system-ui, sans-serif;
-  --font-heading: var(--font-inter), system-ui, sans-serif;
-  --font-mono: var(--font-departure-mono), "Consolas", monospace;
+  --font-sans: var(--font-geist), system-ui, sans-serif;
+  --font-heading: var(--font-geist), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), "Consolas", monospace;
 
-  /* Body font scale */
+  /* Body + heading scales below are fluid across a single viewport range:
+     375px (mobile min) → 1728px (upper bound). Above 1728px every size holds
+     at its max. To retune the upper bound, recompute each clamp's slope for
+     the new range. */
   --text-*: initial;
 
-  --text-2xs: clamp(0.625rem, 0.585rem + 0.16vw, 0.6875rem);
-  --text-2xs--line-height: 120%;
-  --text-2xs--letter-spacing: 0;
-
-  --text-xs: clamp(0.75rem, 0.699rem + 0.2041vw, 0.875rem);
+  /* Smallest step — mono tags/labels. 11px → 12px. */
+  --text-xs: clamp(0.6875rem, 0.67rem + 0.074vw, 0.75rem);
   --text-xs--line-height: 115%;
-  --text-xs--letter-spacing: -0.01em;
+  --text-xs--letter-spacing: 0;
 
-  --text-sm: clamp(0.875rem, 0.824rem + 0.2041vw, 1rem);
+  --text-sm: clamp(0.8125rem, 0.795rem + 0.074vw, 0.875rem);
   --text-sm--line-height: 135%;
   --text-sm--letter-spacing: 0;
 
-  --text-md: clamp(1rem, 0.949rem + 0.2041vw, 1.125rem);
+  --text-md: clamp(1rem, 0.965rem + 0.148vw, 1.125rem);
   --text-md--line-height: 135%;
   --text-md--letter-spacing: 0;
 
-  --text-lg: clamp(1.125rem, 1.074rem + 0.2041vw, 1.25rem);
+  --text-lg: clamp(1.125rem, 1.09rem + 0.148vw, 1.25rem);
   --text-lg--line-height: 135%;
   --text-lg--letter-spacing: 0;
 
-  /* Heading scale (1–6) — fluid, 375px → 1280px.
-     Desktop maxes: 68 / 49 / 36 / 25 / 19px.
-     Mobile mins:   40 / 35 / 28 / 22 / 18px; 6 is the mono eyebrow. */
-  --text-h1: clamp(2.5rem, 1.775rem + 3.094vw, 4.25rem);
+  /* Heading scale (1–6) — fluid, 375px → 1728px.
+     Desktop maxes: 80 / 48 / 40 / 24 / 19px.
+     Mobile mins:   40 / 32 / 28 / 20 / 18px; 6 is the mono eyebrow. */
+  --text-h1: clamp(2.5rem, 1.807rem + 2.956vw, 5rem);
   --text-h1--line-height: 95%;
   --text-h1--letter-spacing: -0.03em;
 
-  --text-h2: clamp(2.1875rem, 1.825rem + 1.547vw, 3.0625rem);
+  --text-h2: clamp(2rem, 1.723rem + 1.183vw, 3rem);
   --text-h2--line-height: 100%;
   --text-h2--letter-spacing: -0.02em;
 
-  --text-h3: clamp(1.75rem, 1.543rem + 0.884vw, 2.25rem);
+  --text-h3: clamp(1.75rem, 1.542rem + 0.887vw, 2.5rem);
   --text-h3--line-height: 108%;
   --text-h3--letter-spacing: -0.02em;
 
-  --text-h4: clamp(1.375rem, 1.297rem + 0.331vw, 1.5625rem);
+  --text-h4: clamp(1.25rem, 1.181rem + 0.296vw, 1.5rem);
   --text-h4--line-height: 115%;
   --text-h4--letter-spacing: -0.02em;
 
-  --text-h5: clamp(1.125rem, 1.099rem + 0.11vw, 1.1875rem);
+  --text-h5: clamp(1.125rem, 1.108rem + 0.074vw, 1.1875rem);
   --text-h5--line-height: 130%;
   --text-h5--letter-spacing: -0.01em;
 
@@ -108,23 +78,10 @@
   --text-h6--letter-spacing: 0;
 
   /* Misc  */
-  --nav-height: 64px; /* bumped to 72px at md — see below */
   --button-height: 44px;
   --button-height-sm: 34px;
   --button-radius: 4px;
   --button-radius-sm: 3px;
-
-  /* Shadow */
-  --shadow-diffused:
-    176px 308px 142px rgba(0, 0, 0, 0.01), 99px 174px 120px rgba(0, 0, 0, 0.05),
-    44px 77px 89px rgba(0, 0, 0, 0.09), 11px 19px 49px rgba(0, 0, 0, 0.1);
-}
-
-/* Keep in sync with --breakpoint-md (840px); media conditions can't read var(). */
-@media (min-width: 840px) {
-  :root {
-    --nav-height: 72px;
-  }
 }
 
 body {
@@ -133,20 +90,6 @@ body {
   line-height: 135%;
   color: var(--color-foreground);
   background-color: var(--color-background);
-}
-
-.dark {
-  --color-background: var(--color-stone-950);
-  --color-alt: var(--color-stone-900);
-  --color-popover: var(--color-stone-900);
-  --color-foreground: var(--color-stone-300);
-  --color-strong: var(--color-white);
-  --color-border: var(--color-stone-700);
-  --color-border-dark: var(--color-stone-600);
-  --color-secondary-foreground: var(--color-white);
-  --color-destructive: var(--color-red-400);
-  --color-muted: var(--color-stone-800);
-  --color-muted-foreground: var(--color-stone-400);
 }
 
 .touch {

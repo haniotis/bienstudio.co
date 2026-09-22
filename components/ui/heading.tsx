@@ -12,11 +12,11 @@ const headingVariants = cva(
   {
     variants: {
       size: {
-        1: "text-h1 font-semibold",
-        2: "text-h2 font-semibold",
-        3: "text-h3 font-semibold",
-        4: "text-h4 font-semibold",
-        5: "text-h5 font-semibold",
+        1: "text-h1 font-normal",
+        2: "text-h2 font-normal",
+        3: "text-h3 font-normal",
+        4: "text-h4 font-normal",
+        5: "text-h5 font-normal",
         6: "font-mono text-h6 uppercase",
       },
     },
@@ -30,16 +30,7 @@ interface HeadingProps
   extends
     React.HTMLAttributes<HTMLElement>,
     VariantProps<typeof headingVariants> {
-  tag?:
-    | "h1"
-    | "h2"
-    | "h3"
-    | "h4"
-    | "h5"
-    | "h6"
-    | "p"
-    | "span"
-    | "blockquote"
+  tag?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span" | "blockquote"
   children: React.ReactNode
 }
 
