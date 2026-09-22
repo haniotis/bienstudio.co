@@ -11,7 +11,7 @@ export default function Home() {
       <header className="flex items-center justify-between">
         <Logo className="text-strong h-5 w-auto" />
         <a
-          href="mailto:hello@bienstudio.co"
+          href="mailto:bobby@bienstudio.co"
           className="text-foreground hover:text-strong text-sm transition-colors"
         >
           Say hello
