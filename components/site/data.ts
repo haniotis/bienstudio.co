@@ -3,7 +3,7 @@
 
 export const siteConfig = {
   name: "Bien Studio",
-  email: "hello@bienstudio.co",
+  email: "bobby@bienstudio.co",
   availability: "Available for December",
 }
 
