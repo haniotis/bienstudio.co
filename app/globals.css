@@ -37,11 +37,11 @@
   --text-xs--line-height: 115%;
   --text-xs--letter-spacing: 0;
 
-  --text-sm: clamp(0.8125rem, 0.795rem + 0.074vw, 0.875rem);
+  --text-sm: clamp(0.8125rem, 0.761rem + 0.222vw, 1rem);
   --text-sm--line-height: 135%;
   --text-sm--letter-spacing: 0;
 
-  --text-md: clamp(1rem, 0.965rem + 0.148vw, 1.125rem);
+  --text-md: clamp(1rem, 0.931rem + 0.296vw, 1.25rem);
   --text-md--line-height: 135%;
   --text-md--letter-spacing: 0;
 
@@ -72,8 +72,8 @@
   --text-h5--line-height: 130%;
   --text-h5--letter-spacing: -0.01em;
 
-  /* 6 — mono uppercase eyebrow / label. */
-  --text-h6: 0.75rem;
+  /* 6 — mono uppercase eyebrow / label. 12px → 14px. */
+  --text-h6: clamp(0.75rem, 0.715rem + 0.148vw, 0.875rem);
   --text-h6--line-height: 115%;
   --text-h6--letter-spacing: 0;
 
