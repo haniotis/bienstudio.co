@@ -37,11 +37,11 @@
   --text-xs--line-height: 115%;
   --text-xs--letter-spacing: 0;
 
-  --text-sm: clamp(0.8125rem, 0.761rem + 0.222vw, 1rem);
+  --text-sm: clamp(0.8125rem, 0.778rem + 0.148vw, 0.9375rem);
   --text-sm--line-height: 135%;
   --text-sm--letter-spacing: 0;
 
-  --text-md: clamp(1rem, 0.931rem + 0.296vw, 1.25rem);
+  --text-md: clamp(1rem, 0.965rem + 0.148vw, 1.125rem);
   --text-md--line-height: 135%;
   --text-md--letter-spacing: 0;
 

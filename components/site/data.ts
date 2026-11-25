@@ -4,7 +4,7 @@
 export const siteConfig = {
   name: "Bien Studio",
   email: "bobby@bienstudio.co",
-  availability: "Available for December",
+  availability: "Available for January 2027",
 }
 
 // Two-tone hero: `lead` renders in the strong colour, `muted` in the foreground
